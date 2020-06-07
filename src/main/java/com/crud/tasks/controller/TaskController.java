@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -14,7 +15,11 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
-        return new ArrayList<>();
+        return new ArrayList<>(Arrays.asList(
+                new TaskDto(1L, "PH", "PH"),
+                new TaskDto(2L, "PH", "PH"),
+                new TaskDto(3L, "PH", "PH")
+        ));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
@@ -29,7 +34,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.POST, value = "updateTask")
     public TaskDto updateTask(TaskDto task) {
-        return new TaskDto(1L, "PH", "PH");
+        return new TaskDto(1L, "updated_PH", "UPDATED PH");
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "createTask")
