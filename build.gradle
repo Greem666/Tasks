@@ -13,11 +13,18 @@ repositories {
 }
 
 dependencies {
+	// LOMBOK
 	compileOnly('org.projectlombok:lombok')
 	annotationProcessor('org.projectlombok:lombok')
 
+	// SPRING WEB
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// DATABASE
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('mysql:mysql-connector-java')
+
+	// TEST
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
