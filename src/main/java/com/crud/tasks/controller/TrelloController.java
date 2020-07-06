@@ -15,7 +15,7 @@ public class TrelloController {
     @Autowired
     private TrelloClient trelloClient;
 
-    private static final String NECESSARY_PHRASE = "asdasddd";
+    private static final String NECESSARY_PHRASE = "kodilla";
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public void getTrelloBoards() {
