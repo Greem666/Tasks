@@ -30,14 +30,15 @@ public class SimpleEmailService {
     public SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
+        // Needed on my PC, as it is not configured to have a fully qualified domain name
+        mailMessage.setFrom(mail.getMailTo());
+
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
 
         if (mail.getToCc() != null) {
             mailMessage.setCc(mail.getToCc());
-        } else {
-            mailMessage.setCc((String) null);
         }
 
         return mailMessage;

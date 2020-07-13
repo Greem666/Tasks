@@ -43,20 +43,6 @@ public class SimpleEmailServiceTest {
     }
 
     @Test
-    public void shouldNotSetAnyCc() {
-        // Given
-        Mail mail = new Mail("test@test.com", "Test", "Test message");
-        SimpleEmailService simpleEmailService = new SimpleEmailService();
-
-        // When
-        SimpleMailMessage mailMessage = simpleEmailService.createMailMessage(mail);
-
-        // Then
-        String[] expectedCcValue = new String[] {null};
-        assertArrayEquals(expectedCcValue, mailMessage.getCc());
-    }
-
-    @Test
     public void shouldSetCc() {
         // Given
         Mail mail = new Mail("test@test.com", "Test", "Test message", "test_CC@test.com");
