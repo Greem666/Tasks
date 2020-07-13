@@ -26,7 +26,7 @@ public class SimpleEmailServiceTest {
     @Test
     public void shouldSendEmail() {
         // Given
-        Mail mail = new Mail("test@test.com", "Test", "Test message", null);
+        Mail mail = new Mail("test@test.com", "Test", "Test message");
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
@@ -45,7 +45,7 @@ public class SimpleEmailServiceTest {
     @Test
     public void shouldNotSetAnyCc() {
         // Given
-        Mail mail = new Mail("test@test.com", "Test", "Test message", null);
+        Mail mail = new Mail("test@test.com", "Test", "Test message");
         SimpleEmailService simpleEmailService = new SimpleEmailService();
 
         // When
