@@ -22,7 +22,6 @@ public class TrelloFacade {
     private final TrelloService trelloService;
     private final TrelloMapper trelloMapper;
     private final TrelloValidator trelloValidator;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TrelloFacade.class);
 
     public List<TrelloBoardDto> fetchTrelloBoards() {
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloService.fetchTrelloBoards());

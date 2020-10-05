@@ -38,4 +38,7 @@ dependencies {
 
 	// MAIL
 	implementation 'org.springframework.boot:spring-boot-starter-mail:2.3.1.RELEASE'
+
+	// TRANSFORMATION TO JSON
+	compile('com.google.code.gson:gson:2.8.2')
 }
