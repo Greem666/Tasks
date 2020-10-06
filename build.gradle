@@ -41,4 +41,7 @@ dependencies {
 
 	// TRANSFORMATION TO JSON
 	compile('com.google.code.gson:gson:2.8.2')
+
+	// ACTUATOR
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 }
