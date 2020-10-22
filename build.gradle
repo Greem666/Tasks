@@ -44,4 +44,7 @@ dependencies {
 
 	// ACTUATOR
 	compile('org.springframework.boot:spring-boot-starter-actuator')
+
+	// THYMELEAF
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.3.4.RELEASE'
 }
