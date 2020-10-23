@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/trello/")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class TrelloController {
     @Autowired
     private TrelloFacade trelloFacade;
