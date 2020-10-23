@@ -4,12 +4,17 @@ import com.crud.tasks.domain.mail.Mail;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 
+import javax.mail.internet.MimeMessage;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -39,7 +44,8 @@ public class SimpleEmailServiceTest {
         simpleEmailService.send(mail);
 
         // Then
-        verify(javaMailSender, times(1)).send(mailMessage);
+        ArgumentCaptor<MimeMessagePreparator> argumentCaptor = ArgumentCaptor.forClass(MimeMessagePreparator.class);
+        verify(javaMailSender, times(1)).send(argumentCaptor.capture());
 
     }
 
