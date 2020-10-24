@@ -17,13 +17,15 @@ public class EmailScheduler {
     private final AdminConfig adminConfig;
 
 //    @Scheduled(cron = "0 0 10 * * *")
-    @Scheduled(fixedDelay = 1000000)
+    @Scheduled(fixedDelay = 86400000)
     public void sendInformationEmail() {
-        simpleEmailService.send(new Mail(
-                adminConfig.getAdminMail(),
-                SUBJECT,
-                messageFormatter()
-        ));
+        simpleEmailService.send(
+                new Mail(
+                        adminConfig.getAdminMail(),
+                        SUBJECT,
+                        messageFormatter()
+                ),
+                SimpleEmailService.ONCE_A_DAY_EMAIL);
     }
 
     private String messageFormatter() {

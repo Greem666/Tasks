@@ -76,6 +76,6 @@ public class TrelloServiceTestSuite {
         assertEquals("test card", returnedTrelloCardDto.getName());
         assertEquals("http://test.com", returnedTrelloCardDto.getShortUrl());
         assertNull(returnedTrelloCardDto.getTrelloBadges());
-        verify(emailService, times(1)).send(any(Mail.class));
+        verify(emailService, times(1)).send(any(Mail.class), eq(SimpleEmailService.NEW_CARD_EMAIL));
     }
 }

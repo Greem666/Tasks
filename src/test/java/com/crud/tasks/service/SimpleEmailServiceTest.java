@@ -29,7 +29,7 @@ public class SimpleEmailServiceTest {
     private JavaMailSender javaMailSender;
 
     @Test
-    public void shouldSendEmail() {
+    public void shouldSendNewCardEmail() {
         // Given
         Mail mail = new Mail("test@test.com", "Test", "Test message", "test2@test.com");
 
@@ -41,7 +41,28 @@ public class SimpleEmailServiceTest {
         mailMessage.setFrom(mail.getMailTo());
 
         // When
-        simpleEmailService.send(mail);
+        simpleEmailService.send(mail, SimpleEmailService.NEW_CARD_EMAIL);
+
+        // Then
+        ArgumentCaptor<MimeMessagePreparator> argumentCaptor = ArgumentCaptor.forClass(MimeMessagePreparator.class);
+        verify(javaMailSender, times(1)).send(argumentCaptor.capture());
+
+    }
+
+    @Test
+    public void shouldSendOnceADayEmail() {
+        // Given
+        Mail mail = new Mail("test@test.com", "Test", "Test message", "test2@test.com");
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(mail.getMailTo());
+        mailMessage.setSubject(mail.getSubject());
+        mailMessage.setText(mail.getMessage());
+        mailMessage.setCc(mail.getToCc());
+        mailMessage.setFrom(mail.getMailTo());
+
+        // When
+        simpleEmailService.send(mail, SimpleEmailService.ONCE_A_DAY_EMAIL);
 
         // Then
         ArgumentCaptor<MimeMessagePreparator> argumentCaptor = ArgumentCaptor.forClass(MimeMessagePreparator.class);
@@ -53,7 +74,7 @@ public class SimpleEmailServiceTest {
     public void shouldSetCc() {
         // Given
         Mail mail = new Mail("test@test.com", "Test", "Test message", "test_CC@test.com");
-        SimpleEmailService simpleEmailService = new SimpleEmailService();
+//        SimpleEmailService simpleEmailService = new SimpleEmailService();
 
         // When
         SimpleMailMessage mailMessage = simpleEmailService.createMailMessage(mail);
